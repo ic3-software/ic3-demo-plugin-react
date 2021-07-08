@@ -1,0 +1,38 @@
+# -----------------------------------------------------------------------------
+# localization tag, language (, language)+
+# -----------------------------------------------------------------------------
+
+tag,en
+
+# -----------------------------------------------------------------------------
+# Groups (groupId used in widget template definition)
+# -----------------------------------------------------------------------------
+
+MyPluginReact.$myCharts, My Charts
+
+# -----------------------------------------------------------------------------
+# Widget templates caption/description
+# -----------------------------------------------------------------------------
+
+MyPluginReact.KpiCard.$caption, KPI Card
+MyPluginReact.KpiCard.$caption.description, A card with KPI...
+
+# -----------------------------------------------------------------------------
+# A common field can be defined as:
+#
+#       MyPluginReact.fieldName, ...
+#
+# For a specific field in a given widget template:
+#
+#       MyPluginReact.templateId.fieldName, ...
+#
+# -----------------------------------------------------------------------------
+
+MyPluginReact.KpiCard.value, Value
+MyPluginReact.KpiCard.value.description, Data column that identifies the measure to display.
+
+MyPluginReact.KpiCard.compare, Comparison Entities
+MyPluginReact.KpiCard.compare.description, Data column that identifies the comparison entities (e.g., period, geography, etc...).
+
+MyPluginReact.KpiCard.comparisonText, Comparison Text
+MyPluginReact.KpiCard.comparisonText.description, The text displayed at the bottom (use {0} as the value placeholder).
