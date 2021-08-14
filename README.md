@@ -1,6 +1,6 @@
 ## icCube Dashboards Plugin (React/Material-UI/Typescript)
 
-A working example of an icCube Dashboard plugin creating a custom widgets using React/Material-UI/Typescript.
+A working example of an icCube Dashboards plugin creating a custom widgets using React/Material-UI/Typescript.
 
 This plugin is creating the following widgets:
 
@@ -25,7 +25,7 @@ The `package.json` file is containing common scripts:
     zip     : zip the /dist directory to deploy into an icCube server
     clean   : delete /dist /kit directories.
 
-A JetBrains Intellij project is available for a quick start.
+A JetBrains IntelliJ project is available for a quick start.
 
 ### MyPluginReact Renaming
 
