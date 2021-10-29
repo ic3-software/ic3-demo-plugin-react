@@ -68,9 +68,9 @@ module.exports = {
             shared: {
 
                 // https://github.com/mui-org/material-ui/issues/21916
-                "@material-ui/private-theming": {singleton: true},
-                "@material-ui/core/styles": {singleton: true},
-                "@material-ui/styles": {singleton: true},
+                "@mui/private-theming": {singleton: true},
+                "@mui/material/styles": {singleton: true},
+                "@mui/styles": {singleton: true},
                 "@emotion/styled": {singleton: true},
                 "@emotion/core": {singleton: true},
 

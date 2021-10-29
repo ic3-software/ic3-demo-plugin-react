@@ -4,22 +4,21 @@ import {
     FormFields,
     IPublicWidgetReactTemplateDefinition,
     IWidgetPublicContext,
-    IWidgetTemplateDataMappingDef,
     IWidgetTemplateTidyData,
     TidyColumnsType,
+    TidyTableColumnSelector,
     WidgetTemplateDefinitionType
 } from "@ic3/reporting-api";
-import {Theme, Typography} from "@material-ui/core";
-import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp';
-import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
-import {makeStyles} from "@material-ui/styles";
+import {Theme, Typography} from "@mui/material";
+import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import {makeStyles} from "@mui/styles";
 
 const useStyles = makeStyles((theme: Theme) => {
     return {
         root: {
             height: "100%",
             width: "100%",
-            backgroundColor: theme.palette.primary.light,
             paddingTop: theme.spacing(1),
             paddingLeft: theme.spacing(1),
             paddingRight: theme.spacing(1),
@@ -65,10 +64,10 @@ function KpiCard(context: IWidgetPublicContext, data: IWidgetTemplateTidyData, o
 
     const table = data.table;
 
-    const valueSeries = table.getNumericColumnByAlias('value');
+    const valueSeries = table.getColumnByAlias('value');
 
-    const currentValue = valueSeries.getValue(0);
-    const previousValue = valueSeries.getValue(1);
+    const currentValue = valueSeries.is(TidyColumnsType.NUMERIC) ? valueSeries.getValue(0) : null;
+    const previousValue = valueSeries.is(TidyColumnsType.NUMERIC) ? valueSeries.getValue(1) : null;
 
     const formattedValue = valueSeries.getFormattedValueOrValue(0);
 
@@ -141,32 +140,35 @@ interface KpiCardOptions extends FormFieldObject {
      */
     comparisonText: string;
 
+    value: TidyTableColumnSelector;
+    compare: TidyTableColumnSelector;
+
 }
 
 function kpiCardOptionsMeta(): FormFields<KpiCardOptions> {
     return {
+        "value": {
+            fieldType: "columnsChooser",
+            editorConf: {
+                allowedTypes: [TidyColumnsType.NUMERIC],
+                fallback: true,
+            },
+            defaultValue: "" as any,
+        },
+        "compare": {
+            fieldType: "columnsChooser",
+            editorConf: {
+                allowedTypes: [TidyColumnsType.CHARACTER],
+                fallback: true,
+            },
+            defaultValue: "" as any,
+        },
         "comparisonText": {
             fieldType: "string",
             defaultValue: "compared to {0}",
         }
     };
 }
-
-
-function kpiCardDataMappingMeta(): IWidgetTemplateDataMappingDef[] {
-    return [{
-        mappingName: "value",
-        allowedTypes: [TidyColumnsType.NUMERIC],
-        fallback: true,
-        mandatory: true
-    }, {
-        mappingName: "compare",
-        allowedTypes: [TidyColumnsType.CHARACTER],
-        fallback: true,
-        mandatory: true
-    }];
-}
-
 
 export const KpiCardDefinition: IPublicWidgetReactTemplateDefinition<KpiCardOptions> = {
 
@@ -189,7 +191,24 @@ export const KpiCardDefinition: IPublicWidgetReactTemplateDefinition<KpiCardOpti
     withoutDrilldown: true,
     withoutUserMenu: true,
 
-    dataMappingMeta: kpiCardDataMappingMeta(),
+    /**
+     * Graphical MDX query builder meta information.
+     */
+    mdxBuilderSettings: {
+        mdxAxis: [
+            {
+                name: "value",
+                disableNonEmpty: true,
+                mdxAxisName: "value",
+            },
+            {
+                name: "compare",
+                disableNonEmpty: true,
+                mdxAxisName: "compare",
+            },
+        ]
+    },
+
     chartOptionsMeta: kpiCardOptionsMeta(),
 
     reactComponent: true,

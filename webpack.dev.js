@@ -12,9 +12,12 @@ module.exports = merge(common, {
 
     devServer: {
 
-        contentBase: common.output.path,
         port: 4001,
         open: true,
+
+        client: {
+            overlay: false,
+        },
 
     },
 

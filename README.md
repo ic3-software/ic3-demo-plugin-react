@@ -40,17 +40,17 @@ the plugins loaded into an icCube server.
 
 This example starts and shares the module `MyPluginReact` @ `localhost:4001` (see `webpack.dev.js` file).
 
-Refer to this [page](https://github.com/iccube-software/ic3-reporting-api/blob/master/doc/plugin/Debug.md)
+Refer to this [page](https://github.com/ic3-software/ic3-reporting-api/blob/master/doc/plugin/Debug.md)
 that is explaining how to debug the plugin.
 
 ### Build/Deploy
 
-Refer to this [page](https://github.com/iccube-software/ic3-reporting-api/blob/master/doc/plugin/Deploy.md)
+Refer to this [page](https://github.com/ic3-software/ic3-reporting-api/blob/master/doc/plugin/Deploy.md)
 that is explaining how to deploy the plugin.
 
 ### Documentation
 
-See this [page](https://github.com/iccube-software/ic3-reporting-api/blob/master/doc/plugin/Overview.md)
+See this [page](https://github.com/ic3-software/ic3-reporting-api/blob/master/doc/plugin/Overview.md)
 for a detailed documentation of the dev. kit.
 
 _
