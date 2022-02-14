@@ -3,6 +3,7 @@ const {merge} = require("webpack-merge");
 const common = require("./webpack.common.js");
 
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
+const EslintWebpackPlugin = require("eslint-webpack-plugin");
 
 module.exports = merge(common, {
 
@@ -23,13 +24,16 @@ module.exports = merge(common, {
 
     plugins: [
 
+        new EslintWebpackPlugin({
+
+            files: "./src/**/*.{ts,tsx}",
+            threads: true,
+
+        }),
+
         new ForkTsCheckerWebpackPlugin({
 
             async: true,
-
-            eslint: {
-                files: "./src/**/*.{ts,tsx}"
-            }
 
         }),
 
