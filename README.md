@@ -4,7 +4,9 @@ A working example of an icCube Dashboards plugin creating custom widgets using R
 
 This plugin is creating the following widgets:
 
-- KPI card: an Material-UI box displaying a KPI value.
+**KPI card**
+
+An Material-UI box displaying a KPI value.
 
 ### Overview
 

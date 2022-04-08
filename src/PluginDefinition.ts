@@ -1,6 +1,6 @@
 import PluginLocalization from "./PluginLocalization.csv";
 import {ApiUtils, ILocalizationManager, IWidgetManager} from "@ic3/reporting-api";
-import {KpiCardDefinition} from "./widget/KpiCard";
+import {KpiCardDefinition} from "./widget/KpiCardDefinition";
 
 /**
  * The plugin definition exposed as a remote Webpack module to the icCube dashboards application.
