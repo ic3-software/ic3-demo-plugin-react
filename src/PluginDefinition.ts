@@ -1,6 +1,9 @@
 import PluginLocalization from "./PluginLocalization.csv";
-import {ApiUtils, ILocalizationManager, IWidgetManager} from "@ic3/reporting-api";
+import {ApiUtils, ILocalizationManager, ITidyTableTransformationManager, IWidgetManager} from "@ic3/reporting-api";
+import {TransfRendererCustom} from "./transformations/TransfRendererCustom";
 import {KpiCardDefinition} from "./widget/KpiCardDefinition";
+import {OpenLayerMapDefinition} from "./widget/OpenLayerMapDefinition";
+import {GoogleMapDefinition} from "./widget/GoogleMapDefinition";
 
 /**
  * The plugin definition exposed as a remote Webpack module to the icCube dashboards application.
@@ -25,11 +28,20 @@ const PluginDefinition = ApiUtils.makePlugin({
 
     },
 
+    registerTidyTableTransformations(manager: ITidyTableTransformationManager) {
+
+        manager.registerTransformation(TransfRendererCustom);
+
+    },
+
+
     registerWidgets(manager: IWidgetManager) {
 
         console.log("[MyPluginReact] registerWidgets")
 
         manager.registerWidget(KpiCardDefinition);
+        manager.registerWidget(GoogleMapDefinition);
+        manager.registerWidget(OpenLayerMapDefinition);
 
     },
 

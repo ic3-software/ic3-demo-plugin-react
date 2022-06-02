@@ -8,6 +8,18 @@ This plugin is creating the following widgets:
 
 An Material-UI box displaying a KPI value.
 
+**Google Map**
+
+A Google Map widget with markers.
+
+**Open Layer**
+
+An Open Layer widget.
+
+**TransfRendererCustom**
+
+A **transformation** that defines a react based cell renderer to be used in the Table - and PivoTable widgets.
+
 ### Overview
 
 The plugin is a webpack federated module that is loaded at runtime by icCube Dashboards server. Please take care of the

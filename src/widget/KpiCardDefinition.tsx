@@ -10,58 +10,65 @@ import {
     TidyTableColumnSelector,
     WidgetTemplateDefinitionType
 } from "@ic3/reporting-api";
-import {Theme, Typography} from "@mui/material";
+import {Typography} from "@mui/material";
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-import {makeStyles} from "@mui/styles";
+import {styled} from "@mui/material/styles";
+import img from "./img/kpiCard.png"
 
-const useStyles = makeStyles((theme: Theme) => {
-    return {
-        root: {
-            height: "100%",
-            width: "100%",
-            paddingTop: theme.spacing(1),
-            paddingLeft: theme.spacing(1),
-            paddingRight: theme.spacing(1),
-            position: "relative",
-        },
-        title: {
+/**
+ * This might be overloaded in a theme
+ */
+const LocalRoot = styled('div', {
+    name: "MyCharts-KpiCard",
+    slot: 'Root',
+    overridesResolver: (props, styles) => {
+        return styles.root;
+    }
+})(({theme}) => ({
+
+        height: "100%",
+        width: "100%",
+        paddingTop: theme.spacing(1),
+        paddingLeft: theme.spacing(1),
+        paddingRight: theme.spacing(1),
+        position: "relative",
+
+        "& .MyCharts-KpiCard-title": {
             color: theme.palette.primary.contrastText,
         },
-        value: {
+        "& .MyCharts-KpiCard-value": {
             color: theme.palette.primary.contrastText,
             marginBottom: theme.spacing(2),
         },
-        info: {
+        "& .MyCharts-KpiCard-info": {
             display: "flex",
             alignItems: "center",
             position: "absolute",
             bottom: 0,
         },
-        percent: {
+        "& .MyCharts-KpiCard-percent": {
             fontWeight: theme.typography.h1.fontWeight,
             display: "flex",
             alignItems: "center",
         },
-        percentZero: {
+        "& .MyCharts-KpiCard-percentZero": {
             color: theme.palette.primary.contrastText,
         },
-        percentUp: {
+        "& .MyCharts-KpiCard-percentUp": {
             color: theme.palette.success.main,
         },
-        percentDown: {
+        "& .MyCharts-KpiCard-percentDown": {
             color: theme.palette.error.main,
         },
-        text: {
+        "& .MyCharts-KpiCard-text": {
             color: theme.palette.primary.contrastText,
             marginLeft: theme.spacing(1),
         },
-    }
-});
+    })
+);
 
 function KpiCard(context: IWidgetPublicContext, data: IWidgetTemplateTidyData, options: KpiCardOptions, header: string) {
-
-    const classes = useStyles();
 
     const table = data.table;
 
@@ -78,7 +85,7 @@ function KpiCard(context: IWidgetPublicContext, data: IWidgetTemplateTidyData, o
 
     let diffPercent: number | null = null;
     let diffIcon = null;
-    let diffClass = classes.percentZero;
+    let diffClass = "MyCharts-KpiCard-percentZero";
 
     if (currentValue != null && previousValue != null) {
         diffPercent = (currentValue - previousValue) / previousValue * 100;
@@ -87,39 +94,39 @@ function KpiCard(context: IWidgetPublicContext, data: IWidgetTemplateTidyData, o
     if (diffPercent != null && isFinite(diffPercent)) {
         if (diffPercent > 0) {
             diffIcon = <ArrowDropUpIcon/>;
-            diffClass = classes.percentUp;
+            diffClass = "MyCharts-KpiCard-percentUp";
         } else if (diffPercent < 0) {
             diffIcon = <ArrowDropDownIcon/>;
-            diffClass = classes.percentDown;
+            diffClass = "MyCharts-KpiCard-percentDown";
         }
     } else {
         diffPercent = null;
     }
 
     return (
-        <div className={classes.root}>
+        <LocalRoot variant={options.variant}>
 
-            <Typography variant="subtitle2" paragraph={true} className={classes.title}>
+            <Typography variant="subtitle2" paragraph={true} className={"MyCharts-KpiCard-title"}>
                 {header ?? ""}
             </Typography>
 
-            <Typography variant="h3" className={classes.value}>
+            <Typography variant="h3" className={"MyCharts-KpiCard-value"}>
                 <span>{formattedValue}</span>
             </Typography>
 
-            <Typography variant="caption" paragraph={true} className={classes.info}>
-                <span className={classes.percent + " " + diffClass}>
+            <Typography variant="caption" paragraph={true} className={"MyCharts-KpiCard-info"}>
+                <span className={"MyCharts-KpiCard-percent" + " " + diffClass}>
                     {diffIcon}
                     <span title={"" + (diffPercent ?? "")}>
                         <span>{(diffPercent != null) ? formatPercent(diffPercent) : '-'}</span>
                     </span>
                 </span>
-                <span className={classes.text}>
+                <span className={"MyCharts-KpiCard-text"}>
                     {options.comparisonText.replace("{0}", prevCaption) || ""}
                 </span>
             </Typography>
 
-        </div>
+        </LocalRoot>
     );
 }
 
@@ -132,6 +139,8 @@ function formatPercent(x: number): string {
  * The options (possibly edited and/or from the theme) of this widget.
  */
 interface KpiCardOptions extends FormFieldObject {
+
+    variant?: string;
 
     /**
      * The meta information is defining a default value to ensure there is always
@@ -148,6 +157,17 @@ interface KpiCardOptions extends FormFieldObject {
 
 function kpiCardOptionsMeta(): FormFields<KpiCardOptions> {
     return {
+        /**
+         * You can add variants in the theme to the KpiCard widget
+         *
+         * @see Theme example for more information
+         */
+        "variant": {
+            fieldType: "widgetVariant",
+            editorConf: {
+                componentName: "MyCharts-KpiCard"
+            }
+        },
         "value": {
             fieldType: "columnsChooser",
             editorConf: {
@@ -179,13 +199,9 @@ export const KpiCardDefinition: IPublicWidgetReactTemplateDefinition<KpiCardOpti
      * @see PluginLocalization.csv
      */
     id: "KpiCard",
+    groupId: "myChartsReact",
 
-    /**
-     * @see PluginLocalization.csv
-     */
-    groupId: "myCharts",
-
-    image: "",
+    image: img,
 
     withoutHeader: true,
     withoutSelection: true,
@@ -216,9 +232,7 @@ export const KpiCardDefinition: IPublicWidgetReactTemplateDefinition<KpiCardOpti
 
     jsCode: (context): IPublicReactChartTemplate<KpiCardOptions> => {
         return {
-            reactElement: (data, options, header) => {
-                return KpiCard(context, data, options, header);
-            }
+            reactElement: (data, options, header) => KpiCard(context, data, options, header)
         }
     },
 

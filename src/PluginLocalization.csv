@@ -8,14 +8,23 @@ tag,en
 # Groups (groupId used in widget template definition)
 # -----------------------------------------------------------------------------
 
-MyPluginReact.$myCharts, My Charts
+MyPluginReact.$myChartsReact, My Charts (React)
 
 # -----------------------------------------------------------------------------
 # Widget templates caption/description
 # -----------------------------------------------------------------------------
 
+MyPluginReact.TransfRendererCustom.$caption, Custom React Cell Renderer
+MyPluginReact.TransfRendererCustom.$caption.description, A custom cell renderer from MyPluginReact
+
 MyPluginReact.KpiCard.$caption, KPI Card
 MyPluginReact.KpiCard.$caption.description, A card with KPI...
+
+MyPluginReact.GoogleMap.$caption, Google Map
+MyPluginReact.GoogleMap.$caption.description, A Google map with markers...
+
+MyPluginReact.OpenLayer.$caption, OpenLayer Map
+MyPluginReact.OpenLayer.$caption.description, An OpenLayer map with RLayers (earthquakes)...
 
 # -----------------------------------------------------------------------------
 # A common field can be defined as:
@@ -28,6 +37,8 @@ MyPluginReact.KpiCard.$caption.description, A card with KPI...
 #
 # -----------------------------------------------------------------------------
 
+MyPluginReact.mapType, Map Type
+
 MyPluginReact.KpiCard.value, Value
 MyPluginReact.KpiCard.value.description, Data column that identifies the measure to display.
 
@@ -36,3 +47,13 @@ MyPluginReact.KpiCard.compare.description, "Data column that identifies the comp
 
 MyPluginReact.KpiCard.comparisonText, Comparison Text
 MyPluginReact.KpiCard.comparisonText.description, "The text displayed at the bottom (use {0} as the value placeholder)."
+
+MyPluginReact.GoogleMap.fullscreenControl, Fullscreen Control
+MyPluginReact.GoogleMap.zoomControl, Zoom Control
+
+# -----------------------------------------------------------------------------
+# Transformations options, name & description
+# -----------------------------------------------------------------------------
+
+MyPluginReact.TransfRendererCustom.columns, Columns
+

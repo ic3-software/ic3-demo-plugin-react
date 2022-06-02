@@ -41,6 +41,10 @@ module.exports = {
                     ]
                 },
                 {
+                    test: /\.css$/,
+                    use: ["style-loader", "css-loader"],
+                },
+                {
                     test: /PluginLocalization\.csv$/,
                     use: require.resolve("raw-loader"),
                 },
@@ -66,13 +70,13 @@ module.exports = {
                 "./PluginDefinition": "./src/PluginDefinition",
             },
             shared: {
-
                 // https://github.com/mui-org/material-ui/issues/21916
                 "@mui/private-theming": {singleton: true},
                 "@mui/material/styles": {singleton: true},
                 "@mui/styles": {singleton: true},
                 "@emotion/styled": {singleton: true},
                 "@emotion/core": {singleton: true},
+                "@emotion/react": {singleton: true},
 
                 "react": {singleton: true},
                 "react-dom": {singleton: true},
