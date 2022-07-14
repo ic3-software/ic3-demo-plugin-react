@@ -3,6 +3,8 @@ const {CleanWebpackPlugin} = require("clean-webpack-plugin");
 
 const ModuleFederationPlugin = require("webpack").container.ModuleFederationPlugin;
 
+const deps = require("./package.json").dependencies;
+
 module.exports = {
 
     entry: "./src/index.ts",
@@ -70,16 +72,18 @@ module.exports = {
                 "./PluginDefinition": "./src/PluginDefinition",
             },
             shared: {
+
                 // https://github.com/mui-org/material-ui/issues/21916
                 "@mui/private-theming": {singleton: true},
-                "@mui/material/styles": {singleton: true},
+                "@mui/material": {singleton: true, requiredVersion: deps["@mui/material"]},
                 "@mui/styles": {singleton: true},
                 "@emotion/styled": {singleton: true},
                 "@emotion/core": {singleton: true},
-                "@emotion/react": {singleton: true},
+                "@emotion/react": {singleton: true, requiredVersion: deps["@emotion/react"]},
 
-                "react": {singleton: true},
-                "react-dom": {singleton: true},
+                "react": {singleton: true, requiredVersion: deps["react"]},
+                "react-dom": {singleton: true, requiredVersion: deps["react-dom"]},
+
             },
         }),
 
