@@ -1,5 +1,11 @@
 import PluginLocalization from "./PluginLocalization.csv";
-import {ApiUtils, ILocalizationManager, ITidyTableTransformationManager, IWidgetManager} from "@ic3/reporting-api";
+import {
+    ApiUtils,
+    ILocalizationManager,
+    ILogger,
+    ITidyTableTransformationManager,
+    IWidgetManager,
+} from "@ic3/reporting-api";
 import {TransfRendererCustom} from "./transformations/TransfRendererCustom";
 import {KpiCardDefinition} from "./widget/KpiCardDefinition";
 import {OpenLayerMapDefinition} from "./widget/OpenLayerMapDefinition";
@@ -20,24 +26,24 @@ const PluginDefinition = ApiUtils.makePlugin({
      */
     id: "MyPluginReact",
 
-    registerLocalization(manager: ILocalizationManager) {
+    registerLocalization(logger: ILogger, manager: ILocalizationManager) {
 
-        console.log("[MyPluginReact] registerLocalization")
+        logger.info("Demo", "[MyPluginReact] registerLocalization")
 
         manager.registerLocalization(PluginLocalization);
 
     },
 
-    registerTidyTableTransformations(manager: ITidyTableTransformationManager) {
+    registerTidyTableTransformations(logger: ILogger, manager: ITidyTableTransformationManager) {
 
         manager.registerTransformation(TransfRendererCustom);
 
     },
 
 
-    registerWidgets(manager: IWidgetManager) {
+    registerWidgets(logger: ILogger, manager: IWidgetManager) {
 
-        console.log("[MyPluginReact] registerWidgets")
+        logger.info("Demo", "[MyPluginReact] registerWidgets")
 
         manager.registerWidget(KpiCardDefinition);
         manager.registerWidget(GoogleMapDefinition);

@@ -12,15 +12,15 @@ if (!fs.existsSync(dist)) {
     process.exit(-1);
 }
 
-const zip = __dirname + "/../kit";
+const zipDir = __dirname + "/../kit";
 
-console.log("rm -rf " + zip);
+console.log("rm -rf " + zipDir);
 
-fs.rmSync(zip, {recursive: true, force: true});
+fs.rmSync(zipDir, {recursive: true, force: true});
 
 const zip = new AdmZip();
 
 zip.addLocalFolder(dist);
-zip.writeZip(zip + "/kit.zip");
+zip.writeZip(zipDir + "/kit.zip");
 
-console.log("done @ " + zip + "/kit.zip");
+console.log("done @ " + zipDir + "/kit.zip");
