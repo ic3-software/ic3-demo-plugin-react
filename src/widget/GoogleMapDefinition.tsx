@@ -243,6 +243,7 @@ export const GoogleMapDefinition: IPublicWidgetReactTemplateDefinition<GoogleWid
      * Graphical MDX query builder meta information.
      */
     mdxBuilderSettings: {
+        withoutCellValuesSingleAxis: true,
         mdxAxis: [
             {
                 name: "location",
