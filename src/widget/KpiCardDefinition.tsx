@@ -16,26 +16,28 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import {styled} from "@mui/material/styles";
 import img from "./img/kpiCard.png"
 
+interface LocalRootOptions {
+    variant?: string;
+}
+
 /**
  * This might be overloaded in a theme
  */
 const LocalRoot = styled('div', {
     name: "MyCharts-KpiCard",
     slot: 'Root',
-    overridesResolver: (props, styles) => {
-        return styles.root;
-    }
-})(({theme}) => ({
+    overridesResolver: (props, styles) => styles.root
+})<LocalRootOptions>(({theme}) => ({
 
-        height: "100%",
-        width: "100%",
-        paddingTop: theme.spacing(1),
-        paddingLeft: theme.spacing(1),
-        paddingRight: theme.spacing(1),
-        position: "relative",
+    height: "100%",
+    width: "100%",
+    paddingTop: theme.spacing(1),
+    paddingLeft: theme.spacing(1),
+    paddingRight: theme.spacing(1),
+    position: "relative",
 
-        "& .MyCharts-KpiCard-title": {
-            color: theme.palette.primary.contrastText,
+    "& .MyCharts-KpiCard-title": {
+        color: theme.palette.primary.contrastText,
         },
         "& .MyCharts-KpiCard-value": {
             color: theme.palette.primary.contrastText,

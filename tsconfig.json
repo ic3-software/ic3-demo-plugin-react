@@ -5,7 +5,7 @@
     "strict": true,
     "jsx": "react",
     "allowJs": true,
-    "skipLibCheck": true,
+    "skipLibCheck": false,
     "esModuleInterop": true,
     "checkJs": false,
     "rootDir": "./",

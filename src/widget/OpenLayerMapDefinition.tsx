@@ -117,7 +117,7 @@ function MyOpenLayerMap(context: IWidgetPublicContext, data: IWidgetTemplateTidy
                 <RStyle
                     cacheSize={1024}
                     cacheId={useCallback(
-                        (feature, resolution) =>
+                        (feature: Feature<Geometry>, resolution: number) =>
                             // This is the hashing function, it takes a feature as its input
                             // and returns a string
                             // It must be dependant of the same inputs as the rendering function
@@ -126,7 +126,7 @@ function MyOpenLayerMap(context: IWidgetPublicContext, data: IWidgetTemplateTidy
                                 : "$" + radiusStar(feature.get("features")[0]),
                         []
                     )}
-                    render={useCallback((feature, resolution) => {
+                    render={useCallback((feature: Feature<Geometry>, resolution: number) => {
                         // This is the rendering function
                         // It has access to the cluster which appears as a single feature
                         // and has a property with an array of all the features that make it
@@ -173,7 +173,7 @@ function MyOpenLayerMap(context: IWidgetPublicContext, data: IWidgetTemplateTidy
                 max="50"
                 id="distance"
                 value={distance}
-                onChange={useCallback((e) =>
+                onChange={useCallback((e: React.ChangeEvent<HTMLInputElement>) =>
                     setDistance(parseInt(e.currentTarget.value)), [])
                 }
             />
