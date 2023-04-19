@@ -2,7 +2,6 @@ import React, {useCallback, useMemo} from "react";
 import {
     FormFieldObject,
     FormFields,
-    IPublicReactChartTemplate,
     IPublicWidgetReactTemplateDefinition,
     IWidgetPublicContext,
     IWidgetTemplateTidyData,
@@ -56,7 +55,9 @@ let uid = 1;
  *
  * If you want an example how to bind with a query, you can check GoogleMap.tsx
  */
-function MyOpenLayerMap(context: IWidgetPublicContext, data: IWidgetTemplateTidyData, options: OpenLayerOptions, header: string) {
+function MyOpenLayerMap(props: { wContext: IWidgetPublicContext, data: IWidgetTemplateTidyData, options: OpenLayerOptions, widgetHeader: string }) {
+
+    const {options} = props;
 
     const [distance, setDistance] = React.useState(20);
     const earthquakeLayer = React.useRef<RLayerCluster>();
@@ -277,12 +278,7 @@ export const OpenLayerMapDefinition: IPublicWidgetReactTemplateDefinition<OpenLa
     chartOptionsMeta: openLayerWidgetMeta(),
 
     reactComponent: true,
-
-    jsCode: (context): IPublicReactChartTemplate<OpenLayerOptions> => {
-        return {
-            reactElement: (data, options, header) => MyOpenLayerMap(context, data, options, header)
-        }
-    },
+    reactEl: MyOpenLayerMap,
 
 }
 

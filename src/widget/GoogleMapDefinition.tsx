@@ -3,7 +3,6 @@ import {
     FormFieldObject,
     FormFields,
     GoogleMapCoordinateChartOptions,
-    IPublicReactChartTemplate,
     IPublicWidgetReactTemplateDefinition,
     IWidgetPublicContext,
     IWidgetTemplateMdxBuilderAxisPropsConstraint,
@@ -14,11 +13,12 @@ import {
 import img from "./img/googleMap.png"
 
 /**
- * You could use Google React Wrapper, https://github.com/googlemaps/react-wrapper instead but you would
- * loose some ic3 features
- *
- * */
-function MyGoogleMap(context: IWidgetPublicContext, data: IWidgetTemplateTidyData, options: GoogleWidgetOptions, header: string) {
+ * You could use the Google React Wrapper https://github.com/googlemaps/react-wrapper instead,
+ * but you would lose some ic3 features.
+ */
+function MyGoogleMap(props: { wContext: IWidgetPublicContext, data: IWidgetTemplateTidyData, options: GoogleWidgetOptions, widgetHeader: string }) {
+
+    const {wContext, data, options} = props;
 
     const googleMapRef: React.RefObject<HTMLDivElement> = useRef<HTMLDivElement>(null);
 
@@ -31,8 +31,8 @@ function MyGoogleMap(context: IWidgetPublicContext, data: IWidgetTemplateTidyDat
         mapOptions: undefined,
     }), [options]);
 
-    // important / cache mapOptions as on each option change there is a react flow callback
-    const ret = context.reactUseGoogleMapPlus(mapOptions, googleMapRef);
+    // important / cache mapOptions as on each option change there is a React flow callback
+    const ret = wContext.reactUseGoogleMapPlus(mapOptions, googleMapRef);
 
     const markers = useRef<google.maps.Marker[]>([]);
 
@@ -50,7 +50,7 @@ function MyGoogleMap(context: IWidgetPublicContext, data: IWidgetTemplateTidyDat
 
             // use ic3 logic to get from the table the column coordiantes  (might be props)
             // this is possible as we use ic3 way to define location, latitude and longitude
-            const [latitude, longitude] = context.getMapCoordinates(table);
+            const [latitude, longitude] = wContext.getMapCoordinates(table);
             if (latitude && longitude) {
 
                 // for each row create a marker
@@ -88,7 +88,7 @@ function MyGoogleMap(context: IWidgetPublicContext, data: IWidgetTemplateTidyDat
             }
         }
 
-    }, [context, gMap, table, inter]);
+    }, [wContext, gMap, table, inter]);
 
 
     return <div style={{width: '100%', height: '100%'}} ref={googleMapRef}/>
@@ -262,11 +262,6 @@ export const GoogleMapDefinition: IPublicWidgetReactTemplateDefinition<GoogleWid
     userMenuOptionsOnEditing: ["setZoomAndCenter"],
 
     reactComponent: true,
-
-    jsCode: (context): IPublicReactChartTemplate<GoogleWidgetOptions> => {
-        return {
-            reactElement: (data, options, header) => MyGoogleMap(context, data, options, header)
-        }
-    },
+    reactEl: MyGoogleMap,
 
 }

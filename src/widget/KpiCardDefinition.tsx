@@ -2,7 +2,6 @@ import React from "react";
 import {
     FormFieldObject,
     FormFields,
-    IPublicReactChartTemplate,
     IPublicWidgetReactTemplateDefinition,
     IWidgetPublicContext,
     IWidgetTemplateTidyData,
@@ -38,16 +37,16 @@ const LocalRoot = styled('div', {
 
     "& .MyCharts-KpiCard-title": {
         color: theme.palette.primary.contrastText,
-        },
-        "& .MyCharts-KpiCard-value": {
-            color: theme.palette.primary.contrastText,
-            marginBottom: theme.spacing(2),
-        },
-        "& .MyCharts-KpiCard-info": {
-            display: "flex",
-            alignItems: "center",
-            position: "absolute",
-            bottom: 0,
+    },
+    "& .MyCharts-KpiCard-value": {
+        color: theme.palette.primary.contrastText,
+        marginBottom: theme.spacing(2),
+    },
+    "& .MyCharts-KpiCard-info": {
+        display: "flex",
+        alignItems: "center",
+        position: "absolute",
+        bottom: 0,
         },
         "& .MyCharts-KpiCard-percent": {
             fontWeight: theme.typography.h1.fontWeight,
@@ -70,7 +69,9 @@ const LocalRoot = styled('div', {
     })
 );
 
-function KpiCard(context: IWidgetPublicContext, data: IWidgetTemplateTidyData, options: KpiCardOptions, header: string) {
+function KpiCard(props: { wContext: IWidgetPublicContext, data: IWidgetTemplateTidyData, options: KpiCardOptions, widgetHeader: string }) {
+
+    const {data, options, widgetHeader} = props;
 
     const table = data.table;
 
@@ -109,7 +110,7 @@ function KpiCard(context: IWidgetPublicContext, data: IWidgetTemplateTidyData, o
         <LocalRoot variant={options.variant}>
 
             <Typography variant="subtitle2" paragraph={true} className={"MyCharts-KpiCard-title"}>
-                {header ?? ""}
+                {widgetHeader ?? ""}
             </Typography>
 
             <Typography variant="h3" className={"MyCharts-KpiCard-value"}>
@@ -231,11 +232,6 @@ export const KpiCardDefinition: IPublicWidgetReactTemplateDefinition<KpiCardOpti
     chartOptionsMeta: kpiCardOptionsMeta(),
 
     reactComponent: true,
-
-    jsCode: (context): IPublicReactChartTemplate<KpiCardOptions> => {
-        return {
-            reactElement: (data, options, header) => KpiCard(context, data, options, header)
-        }
-    },
+    reactEl: KpiCard,
 
 }
