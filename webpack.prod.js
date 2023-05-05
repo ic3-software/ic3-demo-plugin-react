@@ -22,7 +22,7 @@ module.exports = merge(common, {
         new EslintWebpackPlugin({
 
             files: "./src/**/*.{ts,tsx}",
-            threads: true,
+            cache: false,
 
         }),
 
