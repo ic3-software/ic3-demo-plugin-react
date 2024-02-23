@@ -51,6 +51,24 @@ Keep that name simple (i.e., ASCII letter without any space, separator, etc...) 
 (once deployed into an icCube server), Webpack module name, localization id, etc... That name must be unique across all
 the plugins loaded into an icCube server.
 
+### Project skeleton
+
+This is the folder structure of a reporting plugin. Using this structure, you can combine parts of the other example plugins.
+
+```
+ic3-demo-plugin-react
+ |- bin                 : scripts for building
+ |- dist                : build result
+ |- node_modules        : npm packages
+ |- public              : 
+ `- src                 : code sources
+   |- @types            : TS types
+   |- images            : images from widgets / logos for themes
+   |- theme             : theme definition files
+   |- transformations   : transformation definition files
+   `- widget            : widget definition files
+```
+
 ### Develop
 
 This example starts and shares the module `MyPluginReact` @ `localhost:4001` (see `webpack.dev.js` file).
