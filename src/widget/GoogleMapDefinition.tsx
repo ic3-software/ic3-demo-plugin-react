@@ -39,6 +39,9 @@ function MyGoogleMap(props: { wContext: IWidgetPublicContext, data: IWidgetTempl
     const gMap = ret?.map;
     const table = data?.table;
     const inter = data?.inter;
+
+    const wsContext = wContext.getStableContext();
+
     useMemo(() => {
 
         if (gMap && table) {
@@ -50,7 +53,7 @@ function MyGoogleMap(props: { wContext: IWidgetPublicContext, data: IWidgetTempl
 
             // use ic3 logic to get from the table the column coordiantes  (might be props)
             // this is possible as we use ic3 way to define location, latitude and longitude
-            const [latitude, longitude] = wContext.getMapCoordinates(table);
+            const [latitude, longitude] = wsContext.getMapCoordinates(table);
             if (latitude && longitude) {
 
                 // for each row create a marker
@@ -88,7 +91,7 @@ function MyGoogleMap(props: { wContext: IWidgetPublicContext, data: IWidgetTempl
             }
         }
 
-    }, [wContext, gMap, table, inter]);
+    }, [wsContext, gMap, table, inter]);
 
 
     return <div style={{width: '100%', height: '100%'}} ref={googleMapRef}/>
