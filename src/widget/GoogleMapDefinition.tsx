@@ -32,7 +32,7 @@ function MyGoogleMap(props: { wContext: IWidgetPublicContext, data: IWidgetTempl
     }), [options]);
 
     // important / cache mapOptions as on each option change there is a React flow callback
-    const ret = wContext.reactUseGoogleMapPlus(mapOptions, googleMapRef);
+    const ret = wContext.getStableContext().reactUseGoogleMapPlus(mapOptions, googleMapRef);
 
     const markers = useRef<google.maps.Marker[]>([]);
 

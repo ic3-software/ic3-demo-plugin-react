@@ -74,9 +74,9 @@ module.exports = {
             shared: {
 
                 // https://github.com/mui-org/material-ui/issues/21916
-                "@mui/private-theming": {singleton: true},
-                "@mui/material": {singleton: true, requiredVersion: deps["@mui/material"]},
-                "@emotion/styled": {singleton: true},
+                "@mui/private-theming": {singleton: true, version: deps["@mui/material"]},
+                "@mui/material": {singleton: true, requiredVersion: deps["@mui/material"], version: deps["@mui/material"]},
+
                 "@emotion/core": {singleton: true},
                 "@emotion/react": {singleton: true, requiredVersion: deps["@emotion/react"]},
 
