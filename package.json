@@ -1,6 +1,6 @@
 {
   "name": "@ic3/demo-plugin-react",
-  "version": "9.0.0",
+  "version": "9.0.1",
   "description": "icCube dashboards plugin: Javascript",
   "homepage": "https://github.com/ic3-software/ic3-demo-plugin-react",
   "repository": "https://github.com/ic3-software/ic3-demo-plugin-react",
@@ -8,7 +8,7 @@
   "dependencies": {
     "@emotion/react": "11.14.0",
     "@emotion/styled": "11.14.1",
-    "@ic3/reporting-api": "9.0.0",
+    "@ic3/reporting-api": "9.0.1",
     "@mui/icons-material": "7.3.1",
     "@mui/material": "7.3.1",
     "lodash": "4.17.21",
