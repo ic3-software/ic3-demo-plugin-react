@@ -1,6 +1,6 @@
-## icCube Dashboards Plugin (React/Material-UI/Typescript)
+## icCube Dashboards Plugin (React/Material-UI/TypeScript)
 
-A working example of an icCube Dashboards plugin creating custom widgets using React/Material-UI/Typescript.
+A working example of an icCube Dashboards plugin creating custom widgets using React/Material-UI/TypeScript.
 
 This plugin is creating the following widgets:
 
@@ -27,7 +27,7 @@ setup of the `ModuleFederationPlugin` in the [webpack.common.js](./webpack.commo
 
 ### Getting Started
 
-Clone that Git repository that is proposing a common Javascript/Typescript project using Webpack.
+Clone that Git repository that is proposing a common JavaScript/TypeScript project using Webpack.
 
 Use `npm` to install the dependencies:
 

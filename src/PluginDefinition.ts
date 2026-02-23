@@ -2,10 +2,10 @@ import PluginLocalization from "./PluginLocalization.csv";
 import {
     ApiUtils,
     ILocalizationManager,
-    ILogger,
     ITidyTableTransformationManager,
     IWidgetManager,
 } from "@ic3/reporting-api";
+import {ILogger} from "@ic3/common-api";
 import {TransfRendererCustom} from "./transformations/TransfRendererCustom";
 import {KpiCardDefinition} from "./widget/KpiCardDefinition";
 import {OpenLayerMapDefinition} from "./widget/OpenLayerMapDefinition";
