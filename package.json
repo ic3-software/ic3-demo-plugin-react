@@ -1,23 +1,24 @@
 {
   "name": "@ic3/demo-plugin-react",
-  "version": "9.1.1",
+  "version": "9.2.0",
+  "license": "MIT",
   "description": "icCube dashboards plugin: JavaScript",
   "homepage": "https://github.com/ic3-software/ic3-demo-plugin-react",
   "repository": "https://github.com/ic3-software/ic3-demo-plugin-react",
   "private": true,
   "dependencies": {
-    "@ic3/reporting-api": "9.1.1",
+    "@ic3/reporting-api": "9.2.0",
     "react": "18.x",
     "react-dom": "18.x",
     "@mui/icons-material": "7.x",
     "@mui/material": "7.x",
     "@emotion/react": "11.x",
     "@emotion/styled": "11.x",
-    "lodash": "4.17.23",
+    "lodash": "4.18.1",
     "rlayers": "2.0.0"
   },
   "devDependencies": {
-    "@ic3/common-api": "1.0.3",
+    "@ic3/common-api": "1.0.5",
     "@babel/core": "7.28.5",
     "@types/markerclustererplus": "2.1.33",
     "@babel/preset-env": "7.28.5",
@@ -43,9 +44,9 @@
     "style-loader": "4.0.0",
     "ts-loader": "9.5.4",
     "typescript": "5.8.3",
-    "webpack": "5.105.2",
-    "webpack-cli": "6.0.1",
-    "webpack-dev-server": "5.2.2",
+    "webpack": "5.105.4",
+    "webpack-cli": "7.0.2",
+    "webpack-dev-server": "5.2.3",
     "webpack-merge": "6.0.1"
   },
   "scripts": {
