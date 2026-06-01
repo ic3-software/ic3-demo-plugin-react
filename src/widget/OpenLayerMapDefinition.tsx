@@ -60,7 +60,7 @@ function MyOpenLayerMap(props: { wContext: IWidgetPublicContext, data: IWidgetTe
     const {options} = props;
 
     const [distance, setDistance] = React.useState(20);
-    const earthquakeLayer = React.useRef<RLayerCluster>();
+    const earthquakeLayer = React.useRef<RLayerCluster>(undefined);
 
     // reactKey is there to force a React redraw when the options change. <RMap> doesn't refresh well on props change
     const [reactKey, view] = useMemo(() => {

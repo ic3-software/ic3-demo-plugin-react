@@ -75,13 +75,19 @@ module.exports = {
 
                 // https://github.com/mui-org/material-ui/issues/21916
                 "@mui/private-theming": {singleton: true, version: deps["@mui/material"]},
-                "@mui/material": {singleton: true, requiredVersion: deps["@mui/material"], version: deps["@mui/material"]},
 
-                "@emotion/core": {singleton: true},
+                "@mui/material": {singleton: true, requiredVersion: deps["@mui/material"], version: deps["@mui/material"]},
+                "@mui/system": {singleton: true, requiredVersion: deps["@mui/system"], version: deps["@mui/system"]},
+
                 "@emotion/react": {singleton: true, requiredVersion: deps["@emotion/react"]},
+                "@emotion/styled": {singleton: true, requiredVersion: deps["@emotion/styled"]},
 
                 "react": {singleton: true, requiredVersion: deps["react"]},
                 "react-dom": {singleton: true, requiredVersion: deps["react-dom"]},
+                "react-dom/client": {singleton: true, requiredVersion: deps["react-dom"]},
+
+                "react/jsx-runtime": {singleton: true, requiredVersion: deps["react"]},
+                "react/jsx-dev-runtime": {singleton: true, requiredVersion: deps["react"]},
 
             },
         }),

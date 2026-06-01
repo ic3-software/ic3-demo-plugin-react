@@ -20,7 +20,7 @@ function MyGoogleMap(props: { wContext: IWidgetPublicContext, data: IWidgetTempl
 
     const {wContext, data, options} = props;
 
-    const googleMapRef: React.RefObject<HTMLDivElement> = useRef<HTMLDivElement>(null);
+    const googleMapRef: React.RefObject<HTMLDivElement | null> = useRef<HTMLDivElement>(null);
 
     // all options available google.maps.MapOptions
     // see https://developers.google.com/maps/documentation/javascript/reference/map
