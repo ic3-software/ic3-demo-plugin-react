@@ -1,13 +1,13 @@
 {
   "name": "@ic3/demo-plugin-react",
-  "version": "9.3.0",
+  "version": "9.4.0",
   "license": "MIT",
   "description": "icCube dashboards plugin: JavaScript",
   "homepage": "https://github.com/ic3-software/ic3-demo-plugin-react",
   "repository": "https://github.com/ic3-software/ic3-demo-plugin-react",
   "private": true,
   "dependencies": {
-    "@ic3/reporting-api": "9.3.0",
+    "@ic3/reporting-api": "9.4.0",
     "react": "19.2.6",
     "react-dom": "19.2.6",
     "@mui/icons-material": "7.3.10",
