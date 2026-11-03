@@ -1,13 +1,13 @@
 {
   "name": "@ic3/demo-plugin-react",
-  "version": "9.4.3",
+  "version": "10.0.0",
   "license": "MIT",
   "description": "icCube dashboards plugin: JavaScript",
   "homepage": "https://github.com/ic3-software/ic3-demo-plugin-react",
   "repository": "https://github.com/ic3-software/ic3-demo-plugin-react",
   "private": true,
   "dependencies": {
-    "@ic3/reporting-api": "9.4.3",
+    "@ic3/reporting-api": "10.0.0",
     "react": "19.2.6",
     "react-dom": "19.2.6",
     "@mui/icons-material": "7.3.10",
@@ -46,8 +46,8 @@
     "ts-loader": "9.5.4",
     "typescript": "5.8.3",
     "webpack": "5.105.4",
-    "webpack-cli": "7.0.2",
-    "webpack-dev-server": "5.2.3",
+    "webpack-cli": "7.2.3",
+    "webpack-dev-server": "6.1.0",
     "webpack-merge": "6.0.1"
   },
   "scripts": {
